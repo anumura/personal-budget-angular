@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/anumura/personal-budget#readme",
   "dependencies": {
+    "@types/d3": "^5.16.3",
     "cors": "^2.8.5",
+    "d3": "^6.2.0",
     "express": "^4.17.1"
   }
 }

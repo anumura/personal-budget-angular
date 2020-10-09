@@ -7,7 +7,7 @@ const port= 3000;
 app.use(cors());
 //app.use('/',express.static('public'));
 
- const budget=require('./budget.json');
+  const budget=require('./budget.json');
  //{
 //     myBudget:[
 //     {
