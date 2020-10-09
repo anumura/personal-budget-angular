@@ -40,21 +40,17 @@ export class HomepageComponent implements OnInit {
   constructor(private http: HttpClient, private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.http.get('http://localhost:3000/budget')
-    .subscribe((res: any) => {
-      console.log(res);
-      // Using data Service
-      for (let  i = 0; i < this.dataService.budgetservice.myBudget.length; i++){
-        this.dataSource.datasets[0].data[i] = this.dataService.budgetservice.myBudget[i].budget;
-        this.dataSource.labels[i] = this.dataService.budgetservice.myBudget[i].title;
-    }
-    //   for (let  i = 0; i < res.myBudget.length; i++){
-    //     this.dataSource.datasets[0].data[i] = res.myBudget[i].budget;
-    //     this.dataSource.labels[i] = res.myBudget[i].title;
-    // }
+    this.dataService.getChartData().subscribe((data) => {
+      // console.log(data.myBudget.length);
+      for (let  i = 0; i < data.myBudget.length; i++){
+              this.dataSource.datasets[0].data[i] = data.myBudget[i].budget;
+              this.dataSource.labels[i] = data.myBudget[i].title;
+          }
+      // console.log(data);
       this.createChart();
       this.createSvgForD3JS();
       this.createColorsForD3JS();
+      console.log(this.colors);
       this.drawChartForD3JS(this.mydata);
     });
   }
@@ -67,7 +63,6 @@ export class HomepageComponent implements OnInit {
         data: this.dataSource
     });
   }
-
 
   // =====================================D3JS=================================
   private createSvgForD3JS(): void {
