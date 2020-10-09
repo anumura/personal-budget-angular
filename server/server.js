@@ -8,22 +8,6 @@ app.use(cors());
 //app.use('/',express.static('public'));
 
   const budget=require('./budget.json');
- //{
-//     myBudget:[
-//     {
-//         title:"Grocery",
-//         budget: 400
-//     },
-//     {
-//         title:"Rent",
-//         budget: 400
-//     },
-//     {
-//         title:"Utilities",
-//         budget: 50
-//     }
-// ]
-// };
 
 app.get('/hello',(req,res)=>{
     res.send("Hello World");
